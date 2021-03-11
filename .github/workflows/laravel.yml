@@ -39,9 +39,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: 8398a7/action-slack@v3
-      status: ${{ job.status }}
-      fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+    - uses: 8398a7/action-slack@v2
+      if: failure()
+      with:
+        status: ${{ job.status }}
+        author_name: ${{ github.actor }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
     env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
-    if: always() 
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
