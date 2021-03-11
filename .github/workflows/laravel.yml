@@ -34,7 +34,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-  slack notification:
+  slack-notification:
 
     runs-on: ubuntu-latest
 
