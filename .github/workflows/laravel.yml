@@ -35,6 +35,9 @@ jobs:
       run: vendor/bin/phpunit
 
   slack notification:
+    
+    runs-on: ubuntu-latest
+
     steps:
     - uses: 8398a7/action-slack@v3
     with:
