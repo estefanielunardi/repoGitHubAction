@@ -40,7 +40,6 @@ jobs:
 
     steps:
     - uses: 8398a7/action-slack@v2
-      if: failure()
       with:
         status: ${{ job.status }}
         author_name: ${{ github.actor }}
@@ -48,4 +47,5 @@ jobs:
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    if: failure()
      
